@@ -1,5 +1,5 @@
-#ifndef TEST_RESULT_H
-#define TEST_RESULT_H
+#ifndef VINCENT_TEST_RESULT_H
+#define VINCENT_TEST_RESULT_H
 
 #include <string>
 #include <vector>

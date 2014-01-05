@@ -1,10 +1,14 @@
+#ifndef VINCENT_FAILED_ASSERTION_H
+#define VINCENT_FAILED_ASSERTION_H
+
 #include "test_result.h"
 
 namespace Vincent {
   class FailedAssertion {
   public:
     enum Type {
-      True
+      True,
+      IntegerEqual
     };
   private:
     TestResult* testResult = nullptr;
@@ -25,3 +29,5 @@ namespace Vincent {
     }
   };
 }
+
+#endif

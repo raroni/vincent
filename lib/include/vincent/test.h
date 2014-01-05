@@ -1,5 +1,5 @@
-#ifndef TEST_H
-#define TEST_H
+#ifndef VINCENT_TEST_H
+#define VINCENT_TEST_H
 
 #include <string>
 
@@ -11,6 +11,7 @@ namespace Vincent {
   protected:
     std::string name;
     void assert(bool result);
+    void assertEqual(int a, int b);
   public:
     void run(TestResult& result);
     virtual void run() = 0;

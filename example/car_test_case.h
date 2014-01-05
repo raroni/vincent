@@ -8,8 +8,19 @@ public:
   }
   void run() {
     Car car;
+    assert(true); // just testing
     assert(car.hasEngine);
-    assert(car.hasWheels);
+  }
+};
+
+class CarWheelsTest : public Vincent::Test {
+public:
+  CarWheelsTest() {
+    name = "wheels";
+  }
+  void run() {
+    Car car;
+    assertEqual(car.wheelsCount, 4);
   }
 };
 
@@ -18,5 +29,6 @@ public:
   CarTestCase() {
     name = "car";
     add(new CarEngineTest());
+    add(new CarWheelsTest());
   }
 };
