@@ -1,3 +1,6 @@
+#ifndef TEST_CASE_H
+#define TEST_CASE_H
+
 #include <string>
 #include "test.h"
 #include "exception.h"
@@ -27,3 +30,5 @@ namespace Vincent {
     }
   };
 }
+
+#endif
