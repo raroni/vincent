@@ -8,18 +8,18 @@ namespace Vincent {
   class FailedAssertion;
 
   class TestCaseResult {
-    std::vector<TestResult> testResults;
+    std::vector<TestResult*> testResults;
     std::string name;
   public:
     TestResult& createTestResult() {
-      testResults.push_back(TestResult(*this));
-      return testResults.back();
+      testResults.push_back(new TestResult(*this));
+      return *testResults.back();
     }
     std::vector<FailedAssertion*> getFailedAssertions() {
       std::vector<FailedAssertion*> list;
       std::vector<FailedAssertion*>* testList;
       for(auto iterator = testResults.begin(); iterator != testResults.end(); ++iterator) {
-        testList = &(iterator->getFailedAssertions());
+        testList = &((*iterator)->getFailedAssertions());
         list.insert(list.end(), testList->begin(), testList->end());
       }
       return list;
@@ -33,9 +33,14 @@ namespace Vincent {
     int getAssertionsCount() {
       int count = 0;
       for(auto iterator = testResults.begin(); iterator != testResults.end(); ++iterator) {
-        count += iterator->getAssertionsCount();
+        count += (*iterator)->getAssertionsCount();
       }
       return count;
+    }
+    ~TestCaseResult() {
+      for(TestResult* testResult : testResults) {
+        delete testResult;
+      }
     }
   };
 }
