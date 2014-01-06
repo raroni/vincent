@@ -10,9 +10,9 @@ namespace Vincent {
     }
     currentResult->incrementAssertions();
   }
-  void Test::assertEqual(int a, int b) {
-    if(a != b) {
-      currentResult->add(new FailedIntegerEqualAssertion(a, b));
+  void Test::assertEqual(int expected, int actual) {
+    if(expected != actual) {
+      currentResult->add(new FailedIntegerEqualAssertion(expected, actual));
     }
     currentResult->incrementAssertions();
   }

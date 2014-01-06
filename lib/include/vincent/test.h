@@ -11,7 +11,7 @@ namespace Vincent {
   protected:
     std::string name;
     void assert(bool result);
-    void assertEqual(int a, int b);
+    void assertEqual(int expected, int actual);
   public:
     void run(TestResult& result);
     virtual void run() = 0;

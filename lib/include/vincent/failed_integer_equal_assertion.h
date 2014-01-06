@@ -2,18 +2,18 @@
 
 namespace Vincent {
   class FailedIntegerEqualAssertion : public FailedAssertion {
-    int a;
-    int b;
+    int expected;
+    int actual;
   public:
-    FailedIntegerEqualAssertion(int a, int b) : FailedAssertion(FailedAssertion::Type::IntegerEqual) {
-      this->a = a;
-      this->b = b;
+    FailedIntegerEqualAssertion(int expected, int actual) : FailedAssertion(FailedAssertion::Type::IntegerEqual) {
+      this->expected = expected;
+      this->actual = actual;
     }
-    int getA() {
-      return a;
+    int getExpected() {
+      return expected;
     }
-    int getB() {
-      return b;
+    int getActual() {
+      return actual;
     }
   };
 }

@@ -1,5 +1,6 @@
 #include <iostream>
-#include "failed_assertion.h"
+#include "vincent/failed_assertion.h"
+#include "vincent/failed_integer_equal_assertion.h"
 
 namespace Vincent {
   class TextPresentation {
@@ -8,12 +9,20 @@ namespace Vincent {
       std::string message = failedAssertion.getTestCaseName() + "/" + failedAssertion.getTestName() + ": ";
       switch(failedAssertion.getType()) {
         case FailedAssertion::Type::True:
-        message += "Expected true.";
+        message += "Expected true";
         break;
+        case FailedAssertion::Type::IntegerEqual: {
+          auto failedIntegerEqualAssertion = static_cast<FailedIntegerEqualAssertion&>(failedAssertion);
+          message += std::to_string(failedIntegerEqualAssertion.getExpected());
+          message += " did not equal ";
+          message += std::to_string(failedIntegerEqualAssertion.getActual());
+          break;
+        }
         default:
         throw new Exception("Did not understand failed assertion type.");
         break;
       }
+      message += ".";
       return message;
     }
   public:
