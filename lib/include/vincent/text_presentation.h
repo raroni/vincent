@@ -18,6 +18,9 @@ namespace Vincent {
           message += std::to_string(failedIntegerEqualAssertion.getActual());
           break;
         }
+        case FailedAssertion::Type::Throws:
+        message += "Did not throw exception";
+        break;
         default:
         throw new Exception("Did not understand failed assertion type.");
         break;

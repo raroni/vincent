@@ -8,7 +8,8 @@ namespace Vincent {
   public:
     enum Type {
       True,
-      IntegerEqual
+      IntegerEqual,
+      Throws
     };
   private:
     TestResult* testResult = nullptr;
