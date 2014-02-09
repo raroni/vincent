@@ -14,6 +14,7 @@ namespace Vincent {
     std::string name;
     void assert(bool result);
     void assertEqual(int expected, int actual);
+    void assertEqual(std::string expected, std::string actual);
     template <class T>
     void assertThrows(std::function<void ()> function) {
       bool thrown = false;

@@ -9,6 +9,7 @@ namespace Vincent {
     enum Type {
       True,
       IntegerEqual,
+      StringEqual,
       Throws
     };
   private:
