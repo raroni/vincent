@@ -10,7 +10,8 @@ namespace Vincent {
       True,
       IntegerEqual,
       StringEqual,
-      Throws
+      Throws,
+      InRange
     };
   private:
     TestResult* testResult = nullptr;

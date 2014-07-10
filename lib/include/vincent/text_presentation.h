@@ -2,6 +2,7 @@
 #include "vincent/failed_assertion.h"
 #include "vincent/failed_integer_equal_assertion.h"
 #include "vincent/failed_string_equal_assertion.h"
+#include "vincent/failed_in_range_assertion.h"
 
 namespace Vincent {
   class TextPresentation {
@@ -26,9 +27,19 @@ namespace Vincent {
           message += "'" + failedStringEqualAssertion.getActual() + "'";
           break;
         }
-        case FailedAssertion::Type::Throws:
+        case FailedAssertion::Type::Throws: {
         message += "Did not throw exception";
-        break;
+          break;
+        }
+        case FailedAssertion::Type::InRange: {
+          auto failedInRangeAssertion = static_cast<FailedInRangeAssertion&>(failedAssertion);
+          message += std::to_string(failedInRangeAssertion.getActual());
+          message += " was not within range ";
+          message += std::to_string(failedInRangeAssertion.getExpected());
+          message += " +- ";
+          message += std::to_string(failedInRangeAssertion.getTolerance());
+          break;
+        }
         default:
         throw new Exception("Did not understand failed assertion type.");
         break;

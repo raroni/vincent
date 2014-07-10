@@ -2,6 +2,7 @@
 #include "vincent/failed_assertion.h"
 #include "vincent/failed_integer_equal_assertion.h"
 #include "vincent/failed_string_equal_assertion.h"
+#include "vincent/failed_in_range_assertion.h"
 #include "vincent/test.h"
 
 namespace Vincent {
@@ -15,6 +16,13 @@ namespace Vincent {
   void Test::assertEqual(int expected, int actual) {
     if(expected != actual) {
       currentResult->add(new FailedIntegerEqualAssertion(expected, actual));
+    }
+    currentResult->incrementAssertions();
+  }
+  
+  void Test::assertInRange(float expected, float actual, float tolerance) {
+    if(expected < actual-tolerance || expected > actual+tolerance) {
+      currentResult->add(new FailedInRangeAssertion(expected, actual, tolerance));
     }
     currentResult->incrementAssertions();
   }
